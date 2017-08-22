@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/IOriens/postcss-wxss",
   "dependencies": {
-    "postcss": "^6.0.1"
+    "postcss": "^6.0.1",
+    "postcss-selector-parser": "^2.2.3"
   },
   "devDependencies": {
     "jest": "^20.0.0",
