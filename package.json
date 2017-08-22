@@ -1,0 +1,36 @@
+{
+  "name": "postcss-wxss",
+  "version": "0.0.0",
+  "description": "PostCSS plugin to transpile wxss or acss.",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "wxss",
+    "acss"
+  ],
+  "author": "Junjie Ding <djjoriens@gmail.com>",
+  "license": "MIT",
+  "repository": "IOriens/postcss-wxss",
+  "bugs": {
+    "url": "https://github.com/IOriens/postcss-wxss/issues"
+  },
+  "homepage": "https://github.com/IOriens/postcss-wxss",
+  "dependencies": {
+    "postcss": "^6.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-postcss": "^2.0.2",
+    "jest": "^20.0.0"
+  },
+  "scripts": {
+    "test": "jest && eslint *.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-postcss/es5",
+    "env": {
+      "jest": true
+    }
+  }
+}
