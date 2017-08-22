@@ -7,14 +7,36 @@
 [ci]:      https://travis-ci.org/IOriens/postcss-wxss
 
 ```css
-.foo {
-    /* Input example */
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+    animation-name: 'kkk';
+  }
+}
+
+#main, icon {
+  border: 1rpx solid black;
+}
+
+ul li, .page, page {
+  padding: 5rpx 3rpx;
 }
 ```
 
 ```css
-.foo {
-  /* Output example */
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+    animation-name: 'kkk';
+  }
+}
+
+#main, wx-icon {
+  border: %%?1rpx?%% solid black;
+}
+
+ul li, .page, body {
+  padding: %%?5rpx?%% %%?3rpx?%%;
 }
 ```
 
