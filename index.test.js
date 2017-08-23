@@ -13,6 +13,16 @@ describe('transform value', () => {
   it('handles rpx', () => {
     return run('a{width: 2rpx;}', 'wx-a{width: %%?2rpx?%%;}', {})
   })
+  it('handles minus rpx', () => {
+    return run('a{width: -2rpx;}', 'wx-a{width: %%?-2rpx?%%;}', {})
+  })
+  it('handles float rpx', () => {
+    return run('a{width: 2.3rpx;}', 'wx-a{width: %%?2.3rpx?%%;}', {})
+  })
+
+  it('handles .number rpx', () => {
+    return run('a{width: .3rpx;}', 'wx-a{width: %%?.3rpx?%%;}', {})
+  })
 })
 
 describe('transform built-in selectors', () => {

@@ -28,7 +28,7 @@ module.exports = postcss.plugin('postcss-wxss', function (opts) {
 
       rule.walkDecls(decl => {
         // Transform each property declaration here
-        decl.value = decl.value.replace(/\d+rpx/g, (match) => {
+        decl.value = decl.value.replace(/[+-]?[0-9]*\.?([0-9]*)rpx/g, (match) => {
           return `%%?${match}?%%`
         })
       })
