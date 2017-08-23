@@ -18,7 +18,9 @@ module.exports = postcss.plugin('postcss-wxss', function (opts) {
             if (tag.value === 'page') {
               tag.value = 'body'
             } else {
-              tag.value = 'wx-' + tag.value
+              if (tag.value.indexOf('wx-') !== 0) {
+                tag.value = 'wx-' + tag.value
+              }
             }
           })
         })
@@ -26,7 +28,7 @@ module.exports = postcss.plugin('postcss-wxss', function (opts) {
 
       rule.walkDecls(decl => {
         // Transform each property declaration here
-        decl.value = decl.value.replace(/\d+rpx/g, (match, offset, string) => {
+        decl.value = decl.value.replace(/\d+rpx/g, (match) => {
           return `%%?${match}?%%`
         })
       })

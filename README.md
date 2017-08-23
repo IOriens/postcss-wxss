@@ -7,7 +7,7 @@
 [ci]:      https://travis-ci.org/IOriens/postcss-wxss
 
 ```css
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 480rpx) {
   body {
     background-color: lightgreen;
     animation-name: 'kkk';
@@ -47,6 +47,7 @@ postcss([ require('postcss-wxss') ])
 ```
 
 See [PostCSS] docs for examples for your environment.
+
 ## Reference
 
 [writing-a-plugin](https://github.com/postcss/postcss/blob/master/docs/writing-a-plugin.md)

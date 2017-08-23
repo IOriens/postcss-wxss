@@ -65,6 +65,10 @@ describe("don't touch", () => {
   it('id selectors', () => {
     return run('#page{}', '#page{}', {})
   })
+
+  it('tag start with "wx-"', () => {
+    return run('wx-image{}', 'wx-image{}', {})
+  })
 })
 
 describe('media query', () => {
