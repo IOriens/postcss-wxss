@@ -67,7 +67,7 @@ describe('combinators', () => {
   })
 })
 
-describe("don't touch", () => {
+describe("don't transform", () => {
   it('class selectors', () => {
     return run('.page{}', '.page{}', {})
   })

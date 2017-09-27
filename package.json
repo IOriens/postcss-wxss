@@ -1,6 +1,6 @@
 {
   "name": "postcss-wxss",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "PostCSS plugin to transpile wxss or acss.",
   "keywords": [
     "postcss",
@@ -25,6 +25,7 @@
     "standard": "^10.0.3"
   },
   "scripts": {
-    "test": "jest && standard"
+    "test": "jest && standard",
+    "dev": "nodemon --exec 'npm test'"
   }
 }
