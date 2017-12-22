@@ -1,9 +1,44 @@
 var postcss = require('postcss')
+var valueParser = require('postcss-value-parser')
+
 var selectorParser = require('postcss-selector-parser')
 
+var unit = valueParser.unit
+var walk = valueParser.walk
+
 var transformSelector = (complexSelector, transformer) => {
-  return selectorParser(transformer).process(complexSelector).result
+  return selectorParser(transformer).processSync(complexSelector)
 }
+
+function parseWord (node, opts) {
+  const pair = unit(node.value)
+  if (pair) {
+    const num = Number(pair.number)
+    const u = pair.unit.toLowerCase()
+    if (u === 'rpx') {
+      node.value = `%%?${num + u}?%%`
+    }
+  }
+}
+
+var tranformValue = (decl, opts) =>
+  valueParser(decl.value)
+    .walk(node => {
+      if (node.type === 'word') {
+        parseWord(node, opts)
+      } else if (node.type === 'function') {
+        if (node.value === 'url') {
+          return false
+        }
+        walk(node.nodes, n => {
+          if (n.type === 'word') {
+            parseWord(n, opts)
+          }
+        })
+        return false
+      }
+    })
+    .toString()
 
 module.exports = postcss.plugin('postcss-wxss', function (opts) {
   opts = opts || {}
@@ -33,9 +68,12 @@ module.exports = postcss.plugin('postcss-wxss', function (opts) {
       // handle rpx unit
       rule.walkDecls(decl => {
         // Transform each property declaration here
-        decl.value = decl.value.replace(/[+-]?[0-9]*\.?([0-9]*)rpx/g, match => {
-          return `%%?${match}?%%`
-        })
+        // console.log(decl)
+        // decl.value = decl.value.replace(/[+-]?[0-9]*\.?([0-9]*)rpx/g, match => {
+        //   return `%%?${match}?%%`
+        // })
+
+        decl.value = tranformValue(decl, opts)
       })
     })
   }

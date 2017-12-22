@@ -1,6 +1,6 @@
 {
   "name": "postcss-wxss",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "PostCSS plugin to transpile wxss or acss.",
   "keywords": [
     "postcss",
@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/IOriens/postcss-wxss",
   "dependencies": {
-    "postcss": "^6.0.1",
-    "postcss-selector-parser": "^2.2.3"
+    "postcss": "^6.0.14",
+    "postcss-selector-parser": "^3.1.1",
+    "postcss-value-parser": "^3.3.0"
   },
   "devDependencies": {
     "jest": "^20.0.0",

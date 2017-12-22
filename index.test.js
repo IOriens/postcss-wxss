@@ -21,7 +21,14 @@ describe('transform value', () => {
   })
 
   it('handles .number rpx', () => {
-    return run('a{width: .3rpx;}', 'wx-a{width: %%?.3rpx?%%;}', {})
+    return run('a{width: .3rpx;}', 'wx-a{width: %%?0.3rpx?%%;}', {})
+  })
+  it('leave alone with rpx in url', () => {
+    return run(
+      'a{background: 40rpx 73% url(data:image/gif;base64,2rpxR0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7)}',
+      'wx-a{background: %%?40rpx?%% 73% url(data:image/gif;base64,2rpxR0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7)}',
+      {}
+    )
   })
 })
 
