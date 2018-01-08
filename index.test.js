@@ -86,6 +86,14 @@ describe("don't transform", () => {
   it('tag start with "wx-"', () => {
     return run('wx-image{}', 'wx-image{}', {})
   })
+
+  it('selectors inside keyframes', () => {
+    return run(
+      '@keyframes spin { 0% { height: 0; } }',
+      '@keyframes spin { 0% { height: 0; } }',
+      {}
+    )
+  })
 })
 
 describe('media query', () => {

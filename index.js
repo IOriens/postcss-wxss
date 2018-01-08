@@ -21,6 +21,10 @@ function parseWord (node, opts) {
   }
 }
 
+function isInsideKeyframes (rule) {
+  return rule.parent && rule.parent.type === 'atrule' && /^(-\w+-)?keyframes$/.test(rule.parent.name)
+}
+
 var tranformValue = (decl, opts) =>
   valueParser(decl.value)
     .walk(node => {
@@ -48,22 +52,24 @@ module.exports = postcss.plugin('postcss-wxss', function (opts) {
     root.walkRules(rule => {
       // Transform each rule here
 
-      // rule.selectors == comma seperated selectors
-      // a, b.c {} => ["a", "b.c"]
-      rule.selectors = rule.selectors.map(complexSelector =>
-        // complexSelector => simpleSelectors
-        // "a.b#c" => ["a", ".b", "#c"]
-        transformSelector(complexSelector, simpleSelectors =>
-          // only process type selector, leave alone class & id selectors
-          simpleSelectors.walkTags(tag => {
-            if (tag.value === 'page') {
-              tag.value = 'body'
-            } else if (tag.value.substring(0, 3) !== 'wx-') {
-              tag.value = 'wx-' + tag.value
-            }
-          })
+      if (!isInsideKeyframes(rule)) {
+        // rule.selectors == comma seperated selectors
+        // a, b.c {} => ["a", "b.c"]
+        rule.selectors = rule.selectors.map(complexSelector =>
+          // complexSelector => simpleSelectors
+          // "a.b#c" => ["a", ".b", "#c"]
+          transformSelector(complexSelector, simpleSelectors =>
+            // only process type selector, leave alone class & id selectors
+            simpleSelectors.walkTags(tag => {
+              if (tag.value === 'page') {
+                tag.value = 'body'
+              } else if (tag.value.substring(0, 3) !== 'wx-') {
+                tag.value = 'wx-' + tag.value
+              }
+            })
+          )
         )
-      )
+      }
 
       // handle rpx unit
       rule.walkDecls(decl => {
