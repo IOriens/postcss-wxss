@@ -1,4 +1,5 @@
 # PostCSS Wxss [![Build Status][ci-img]][ci]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FIOriens%2Fpostcss-wxss.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FIOriens%2Fpostcss-wxss?ref=badge_shield)
 
 [PostCSS] plugin to transpile wxss or acss..
 
@@ -56,3 +57,6 @@ See [PostCSS] docs for examples for your environment.
 
 MIT
 
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FIOriens%2Fpostcss-wxss.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FIOriens%2Fpostcss-wxss?ref=badge_large)
